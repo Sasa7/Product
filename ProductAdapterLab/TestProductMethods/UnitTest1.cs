@@ -25,18 +25,18 @@ namespace TestProductMethods
         }
 
         [TestMethod]
-        public void Test_That_SomeExternalVendorProductProperties_AreNotEmpty()
+        public void Test_That_SomeExternalVendorProductAdapterProperties_AreNotEmpty()
         {
             //Arrange
             int expectedPricePerUnit = 1;
             string expectedDescription = "Description";
             string expectedEANCode = "4444";
             //Act
-            var someProduct = new SomeExternalVendorProduct();
+            IProduct actual = new ProductAdapterLib.SomeExternalVendorProductAdapter(new SomeExternalVendorProduct());
             //Assert
-            Assert.AreEqual(expectedPricePerUnit, someProduct.PricePerUnit);
-            Assert.AreEqual(expectedDescription, someProduct.Description);
-            Assert.AreEqual(expectedEANCode, someProduct.EANCode);
+            Assert.AreEqual(expectedPricePerUnit, actual.UnitPrice);
+            Assert.AreEqual(expectedDescription, actual.Title);
+            Assert.AreEqual(expectedEANCode, actual.BarCode);
         }
     }
 }
